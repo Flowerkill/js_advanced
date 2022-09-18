@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        main {
+            width: 800px;
+            margin: 100px auto;
+        }
+        
+        input[type="text"] {
+            width: 60px;
+        }
+        
+        input[type="button"] {
+            margin-left: 10px;
+            width: 50px;
+        }
+        
+        .search {
+            text-align: center;
+        }
+        
+        table {
+            width: 400px;
+            margin: 20px auto;
+            text-align: center;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        
+        table th,
+        td {
+            height: 30px;
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            var data = [{
+                id: 1,
+                pname: "小米",
+                price: 999
+            }, {
+                id: 2,
+                pname: "oppo",
+                price: 1299
+            }, {
+                id: 3,
+                pname: "荣耀",
+                price: 2999
+            }, {
+                id: 4,
+                pname: "华为",
+                price: 3999
+            }, ]
+            var search_price = document.querySelector(".search-price");
+            var start = document.querySelector(".start");
+            var end = document.querySelector(".end");
+            var search_pro = document.querySelector(".search-pro");
+            var pname = document.querySelector(".pname");
+            var tbody = document.querySelector("tbody");
+            setData(data);
+
+            function setData(mydata) {
+                tbody.innerHTML = "";
+                mydata.forEach(function(value) {
+
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = "<tr><td>" + value.id + "</td><td>" + value.pname + "</td><td>" + value.price + "</td></tr>";
+                    tbody.append(tr);
+                })
+            }
+            search_price.addEventListener('click', function() {
+                var newArr = data.filter(function(value) {
+
+                    return value.price >= start.value && value.price <= end.value;
+                })
+                setData(newArr);
+
+            })
+            search_pro.addEventListener("click", function() {
+                var arr = [];
+                data.some(function(value) {
+
+                    if (value.pname === pname.value) {
+                        // setData(value);
+                        arr.push(value)
+                        return true;
+                    }
+                })
+                setData(arr);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="search">
+            <label for="start"> 按照价格查询：</label><input id="start" class="start" type="text"> - <input class="end" type="text"><input class="search-price" type="button" value="搜索">
+
+            <label for="pname"> 按照商品名称查询：</label><input id="pname" class="pname" type="text"><input class="search-pro" type="button" value="查询">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>产品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

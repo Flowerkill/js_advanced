@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj = {
+                name: "andy",
+                age: 18,
+                msg: {
+                    id: 11,
+                    name: "red",
+                    msg: {
+                        name: "pink",
+                        age: 99,
+                        goods: ["red", "blue", "pink"]
+                    }
+
+                },
+                color: ["skyblue", "popur", "hotpink"]
+
+            }
+            //浅拷贝
+        var o = {};
+        // for (var k in obj) {
+        //     o[k] = obj[k]
+        // } 
+        //es6 语法糖
+        // Object.assign(o, obj);
+        // o.msg.id = 1001;
+
+
+        // console.log(obj);
+        // console.log(o);
+
+        //深拷贝 利用函数递归实现
+
+        function deepCopy(newobj, oldobj) {
+            for (var k in oldobj) {
+                var item = oldobj[k];
+                //区分简单数据类型和复杂数据类型
+                //判断是否为数组
+                if (item instanceof Array) {
+                    newobj[k] = [];
+                    deepCopy(newobj[k], item);
+                } else if (item instanceof Object) { //判断是否为对象
+                    newobj[k] = {};
+                    deepCopy(newobj[k], item);
+                } else { //否则就是简单数据类型
+                    newobj[k] = item;
+                }
+
+
+            }
+        }
+        deepCopy(o, obj);
+        o.msg.id = 1001;
+
+
+        console.log(obj);
+        console.log(o);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

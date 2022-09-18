@@ -1,0 +1,96 @@
+    * {
+        margin: 0;
+        padding: 0;
+        /* box-sizing: border-box; */
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    main {
+        margin: 200px auto;
+        width: 1000px;
+    }
+    
+    main h3 {
+        text-align: center;
+    }
+    
+    .tabBox {
+        position: relative;
+        margin: 50px auto;
+        width: 1000px;
+        border: 2px solid pink;
+    }
+    
+    .firstnav {
+        height: 50px;
+    }
+    
+    .firstnav ul li {
+        float: left;
+        position: relative;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-right: 1px solid skyblue;
+        overflow: hidden;
+        user-select: none;
+    }
+    
+    .firstnav ul .liactive {
+        border-bottom: 2px solid #fff;
+    }
+    
+    .firstnav ul li span:first-child input {
+        width: 80px;
+        height: 30px;
+    }
+    
+    .firstnav ul li .iconfont {
+        position: absolute;
+        top: -16px;
+        right: 0;
+    }
+    
+    .tabadd {
+        float: right;
+    }
+    
+    .tabadd span {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #000;
+        line-height: 20px;
+        text-align: center;
+        margin: 15px;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .tabscon {
+        height: 300px;
+        text-indent: 2em;
+        padding-top: 40px;
+        border-top: 1px solid skyblue;
+    }
+    
+    .tabscon section {
+        display: none;
+        user-select: none;
+    }
+    
+    .tabscon section input {
+        width: 90%;
+        height: 250px;
+    }
+    
+    .tabscon .conactive {
+        display: block;
+    }
